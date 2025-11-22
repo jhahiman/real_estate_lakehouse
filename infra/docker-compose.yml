@@ -1,0 +1,16 @@
+# Minimal docker-compose for local development (placeholders)
+version: "3.8"
+services:
+  spark:
+    image: bitnami/spark:latest
+    container_name: real_estate_spark
+    restart: unless-stopped
+    # Add volumes, ports and environment as needed
+
+  dagster:
+    image: dagster/dagster:latest
+    container_name: real_estate_dagster
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    # Configure volumes and environment for your Dagster instance

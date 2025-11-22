@@ -1,0 +1,6 @@
+pandas
+pyspark
+dagster
+requests
+beautifulsoup4
+pytest
