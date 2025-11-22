@@ -1,18 +1,45 @@
-# Real Estate Lakehouse
+# Real Estate Lakehouse Platform
 
+This project builds a full end-to-end Real Estate Analytics Lakehouse using:
 
-A real estate lakehouse prototype.
+- **Python + BeautifulSoup** (Scraping)
+- **MinIO** (S3-compatible object store)
+- **Delta Lake + Spark** (Lakehouse storage + CDC)
+- **Dagster** (Orchestration)
+- **Apache Superset** (Dashboards)
+- **Docker Compose** (Local reproducible platform)
+- **Databricks Free Edition** (Cloud-scale Delta Lake & ML)
 
-Repository layout:
+## Architecture Overview
+End-to-end pipeline:
+Scraper → MinIO Raw Layer → Delta Bronze → Delta Silver (CDC) → Gold → Dagster → Superset → Notebooks / Databricks
 
+## Folder Structure
+```text
 REAL_ESTATE_LAKEHOUSE/
-├── infra/ - deployment and docker compose
-├── src/ - source code (ingestion, pipelines, cdc)
-├── orchestration/ - DAGs and orchestration configs
-├── notebooks/ - exploratory notebooks
-├── dashboards/ - dashboard assets
-├── docs/ - architecture and design docs
-
-Quick start:
-1. Review `infra/docker-compose.yml` and adjust services/ports as needed.
-2. Install Python dependencies from `requirements.txt`.
+│
+├── infra/
+│   ├── docker-compose.yml
+│   └── README.md
+│
+├── src/
+│   ├── ingestion/
+│   │   └── scraper/
+│   ├── pipelines/
+│   │   └── spark_jobs/
+│   └── cdc/
+│
+├── orchestration/
+│   └── dagster/
+│
+├── notebooks/
+│
+├── dashboards/
+│
+├── docs/
+│   └── architecture.md
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
